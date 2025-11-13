@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio - Loane Scellier</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roxborough+CF:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root{
+      --bordeaux: #561C24;
+      --bordeaux2: #6D2932;
+      --beige: #C7B7A3;
+      --ivory: #E8D8C4;
+    }
+
+    body{
+      background: var(--ivory);
+      color: var(--bordeaux);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6{
+      font-family: 'Roxborough CF', serif;
+    }
+
+    .navbar-custom{ background: var(--bordeaux); }
+    .nav-link{ color: var(--ivory)!important; font-weight: 500; }
+    .nav-link:hover{ color: var(--beige)!important; }
+
+    .navbar-brand img{
+      height: 100px;
+      width: auto;
+      border-radius: 100%;
+    }
+
+    .hero{
+      background: linear-gradient(180deg,var(--bordeaux),var(--bordeaux2));
+      color: var(--ivory);
+      text-align:center;
+      padding:6rem 1rem;
+    }
+
+    .hero h1{ font-size:3rem; }
+    .hero p{ opacity:.9; }
+
+    .camera-container {
+      position: relative;
+      width: 600px;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    .camera { width: 100%; position: relative; z-index: 2; }
+    .screen {
+      position: absolute;
+      top: 28%;
+      left: 10%;
+      width: 64%;
+      height: 42%;
+      overflow: hidden;
+      border-radius: 6px;
+      z-index: 1;
+    }
+    .slideshow { display: flex; width: 100%; height: 100%; animation: slide 20s infinite linear; }
+    .slideshow img { width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; }
+
+    @keyframes slide {
+      0%   { transform: translateX(0); }
+      20%  { transform: translateX(-100%); }
+      40%  { transform: translateX(-200%); }
+      60%  { transform: translateX(-300%); }
+      80%  { transform: translateX(-400%); }
+      100% { transform: translateX(0); }
+    }
+
+    section{ padding:4rem 0; }
+
+    /* ==== COMPÉTENCES ==== */
+    #skills {
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skills-track {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      animation: scrollLoop 25s linear infinite;
+      width: max-content;
+    }
+
+    #skills img {
+      height: 70px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    }
+
+    #skills img:hover {
+      transform: scale(1.2);
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.25));
+    }
+
+    @keyframes scrollLoop {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .skills-wrapper {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .skills-gradient-left, .skills-gradient-right {
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 100%;
+      z-index: 2;
+    }
+    .skills-gradient-left {
+      left: 0;
+      background: linear-gradient(to right, #fff 40%, transparent);
+    }
+    .skills-gradient-right {
+      right: 0;
+      background: linear-gradient(to left, #fff 40%, transparent);
+    }
+
+    .project-card{
+      border:none;
+      border-radius:15px;
+      overflow:hidden;
+      box-shadow:0 8px 20px rgba(0,0,0,0.1);
+      transition:transform .3s;
+      cursor: pointer;
+    }
+    .project-card:hover{ transform:translateY(-8px); }
+
+    .project-card img{
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+     /* ==== CONTACT ==== */
+    #contact {
+      background: white;
+      text-align: center;
+    }
+
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-icons a {
+      text-decoration: none;
+      color: var(--bordeaux);
+      font-size: 2.5rem;
+      background: var(--ivory);
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .contact-icons a:hover {
+      background: var(--bordeaux2);
+      color: var(--ivory);
+      transform: translateY(-5px);
+    }
+
+    footer {
+      background: var(--bordeaux);
+      color: var(--ivory);
+      padding: 2rem 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">
+        <img src="images/Log.png" alt="Logo personnel">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="home" class="hero">
+    <h1>Loane <span style="color:var(--beige);font-weight:700;">Scellier</span></h1>
+    <p class="lead">Étudiante en deuxième année BUT métier du multimédia et de l'internet </p>
+  </header>
+
+  <!-- À propos -->
+  <section id="about" class="bg-white">
+    <div class="container">
+      <h2 class="text-center mb-5">À propos de moi</h2>
+      <div class="row align-items-center justify-content-center">
+        <div class="col-lg-6 text-center mb-4 mb-lg-0">
+          <div class="camera-container mx-auto">
+            <div class="screen">
+              <div class="slideshow">
+                <img src="images/img1.jpg" alt="photo 1">
+                <img src="images/img2.jpg" alt="photo 2">
+                <img src="images/img3.jpg" alt="photo 3">
+                <img src="images/img4.jpg" alt="photo 4">
+                <img src="images/img5.jpg" alt="photo 5">
+              </div>
+            </div>
+            <img src="images/camera.png" alt="camera" class="camera">
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <p class="fs-5 mb-4" style="text-align: justify;">
+            Je suis actuellement en parcours <strong>Création Numérique</strong> j’aime raconter des histoires à travers l’image, le son et le design. Mon univers mêle graphisme, audiovisuel et communication pour créer des projets qui captent l’attention et éveillent la curiosité.
+            En dehors de mes projets, j’adore voyager et capturer mes expériences en photo, une manière pour moi de garder une trace des moments vécus et de les transformer ensuite en inspiration créative.
+          </p>
+          <a href="images/monCV.pdf" target="_blank" class="btn btn-lg" style="background:var(--bordeaux);color:var(--ivory);">
+            Mon CV !
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION COMPÉTENCES MODERNE -->
+  <section id="skills" class="text-center py-5">
+    <div class="container">
+      <h2 class="mb-5">Mes Compétences</h2>
+      <div class="skills-wrapper">
+        <div class="skills-gradient-left"></div>
+        <div class="skills-track">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="Premiere Pro">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="Photoshop">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg" alt="Illustrator">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg" alt="Notion">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Blender">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg" alt="After Effects">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+          <!-- duplication pour boucle continue -->
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="Premiere Pro">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="Photoshop">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg" alt="Illustrator">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg" alt="Notion">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Blender">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg" alt="After Effects">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+        </div>
+        <div class="skills-gradient-right"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projets -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="text-center mb-5">Mes Projets</h2>
+      <div class="row g-4">
+
+        <div class="col-md-4">
+          <a href="https://youtu.be/EZZM97t1kFs" class="text-decoration-none text-reset">
+            <div class="project-card">
+              <img src="images/seconde-chance.png" alt="Seconde chance">
+              <div class="p-3">
+                <h5>Seconde Chance</h5>
+                <p>Court-métrage réalisé dans le cadre des Deauville Green Awards 2025, sur le thème "Filme ton action".
+Le film a remporté la 1ʳᵉ place dans la catégorie Jeune. 
+J’ai participé à la création du scénario et j’ai également interprété un rôle d’actrice.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4">
+          <a href="Projets/CasqueF1.pdf" class="text-decoration-none text-reset">
+            <div class="project-card">
+              <img src="images/casque.png" alt="Casque F1 en 3D">
+              <div class="p-3">
+                <h5>Casque F1 en 3D</h5>
+                <p>Ma première création 3D sur Blender, qui m’a permis de découvrir et de maîtriser les outils de modélisation et de rendu.
+  Un projet formateur qui marque le début de mon apprentissage sur Blender.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4">
+          <a href="Projets/OverTime.pdf" class="text-decoration-none text-reset">
+            <div class="project-card">
+              <img src="images/Overtime.png" alt="Over Time">
+              <div class="p-3">
+                <h5>Over Time</h5>
+                <p>Projet collectif réalisé en première année d’études.
+Nous devions imaginer un événement immersif valorisant le patrimoine industriel d’Elbeuf et concevoir toute la communication autour (identité visuelle, supports, concept, etc.).</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4">
+          <a href="Projets/illustration.pdf" class="text-decoration-none text-reset">
+            <div class="project-card">
+              <img src="images/illustration.png" alt="Illustration écologique">
+              <div class="p-3">
+                <h5>Illustration</h5>
+                <p>Illustration réalisée sur Adobe Illustrator dans un temps imparti.
+Le sujet : exprimer l’absurdité d’un monde ignorant les enjeux du réchauffement climatique et de la perte de biodiversité.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4">
+          <a href="https://youtu.be/y_cIjDUvfk8" class="text-decoration-none text-reset">
+            <div class="project-card">
+              <img src="images/interview.png" alt="Interview Maison Sport Santé">
+              <div class="p-3">
+                <h5>Interview Maison Sport Santé</h5>
+                <p>Montage vidéo réalisé à partir d’une interview sur la Maison Sport Santé.
+J’ai assuré le montage complet en seulement 3 heures, en optimisant le rythme et la cohérence du récit.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4">
+          <a href="https://youtu.be/bh0O1uTY05I" class="text-decoration-none text-reset">
+            <div class="project-card">
+              <img src="images/filmnoir.png" alt="Film Noir">
+              <div class="p-3">
+                <h5>Film Noir</h5>
+                <p>Projet de court-métrage de type film noir, réalisé dans un cadre scolaire, basé sur un scénario donné. J’ai pris en charge la captation vidéo, la gestion du son et le montage final.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- CONTACT AVEC ICONES -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="mb-3">Contact</h2>
+      <p>N’hésitez pas à me contacter : </p>
+
+      <div class="contact-icons">
+        <a href="mailto:loane.scellier@gmail.com" title="Envoyer un email"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/loane-scellier/" target="_blank" title="Voir mon profil LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Scellier Loane — Tous droits réservés</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
